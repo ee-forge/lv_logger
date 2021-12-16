@@ -4,20 +4,11 @@
  * Link Vault Logger Class
  *
  * @package     ExpressionEngine
- * @category        Plugin
+ * @category    Plugin
  * @author      Ron Hickson
- * @copyright       Copyright (c) 2014, Ron Hickson
- * @link        http://ee-forge.com/
+ * @copyright   Copyright (c) 2021, Ron Hickson
+ * @link        https://ee-forge.com/
  */
-
-$plugin_info = array(
-    'pi_name'         => 'Link Vault Logger',
-    'pi_version'      => '1.0',
-    'pi_author'       => 'Ron Hickson',
-    'pi_author_url'   => 'http://ee-forge.com/',
-    'pi_description'  => 'Creates a log record without serving a file',
-    'pi_usage'        => Lv_logger::usage()
-);
 
 class Lv_logger {
 
@@ -33,9 +24,7 @@ class Lv_logger {
     {
 		ee()->load->add_package_path( PATH_THIRD.'link_vault' );
 		ee()->load->library('link_vault_library');
-		
-		ee()->load->library('logger');
-		
+
 		$record_data = array(
 			'site_id'		=> ee()->TMPL->fetch_param('site_id', '1'),
 			'entry_id'		=> ee()->TMPL->fetch_param('entry_id'),
@@ -58,6 +47,7 @@ class Lv_logger {
 		$id = ee()->link_vault_library->log_download( $record_data );
 		
 		if (empty($id)) {
+            ee()->load->library('logger');
 			ee()->logger->developer('Link Vault Template failed to create a log record for '. $record_data['file_name'], FALSE);
 		}
     }
@@ -74,7 +64,7 @@ class Lv_logger {
     {
         ob_start();  ?>
 
-The Link Vault Logger plugin simple logs a record of a download.  This is useful when item's to be downloaded are not actual files stored on the server.  For example, downloading a printer-friendly template or PDF generated on-the-fly.
+The Link Vault Logger plugin simply logs a record of a download.  This is useful when item's to be downloaded are not actual files stored on the server.  For example, downloading a printer-friendly template or PDF generated on-the-fly.
 
     {exp:lv_logger entry_id='{entry_id}' file_name='{segment_3}'}
 
@@ -102,5 +92,5 @@ The following parameters are set automatically by the plugin:
     }
     // END
 }
-/* End of file pi.lv_template.php */
-/* Location: ./system/expressionengine/third_party/lv_template/pi.lv_template.php */
+/* End of file pi.lv_logger.php */
+/* Location: ./system/user/addons/lv_logger/pi.lv_logger.php */

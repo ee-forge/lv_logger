@@ -1,7 +1,7 @@
 Link_Vault_Logger
 =================
 
-The Link Vault Logger plugin simple logs a record of a download.  This is useful when item's to be downloaded are not actual files stored on the server.  For example, downloading a printer-friendly template or PDF generated on-the-fly.
+The Link Vault Logger plugin simply logs a record of a download.  This is useful when item's to be downloaded are not actual files stored on the server.  For example, downloading a printer-friendly template or PDF generated on-the-fly.
 
     {exp:lv_logger entry_id='{entry_id}' file_name='{segment_3}'}
 
@@ -20,4 +20,4 @@ The following parameters are set automatically by the plugin:
 	member_id (logged in user)
 	remote_ip (logged in users IP)
 	
-This plugin was inspired by the need to log downloads when PDF's were being created dynamically from an EE template.
+This plugin was inspired by the need to log downloads when PDFs were being created dynamically from an EE template.
